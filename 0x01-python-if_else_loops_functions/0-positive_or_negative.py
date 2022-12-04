@@ -6,4 +6,4 @@ if number == 0:
 elif number % 2 == 0:
 	print({} " is positive".format(number))
 else:
-	print({} " is negative")
+	print({} " is negative", end=" ")
