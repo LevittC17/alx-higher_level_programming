@@ -80,3 +80,11 @@ Tasks:
  * print: out of range
  * You have to use try: / except: / finally:
  * You are not allowed to import any module
+
+
+5. Raise exception
+
+--> Write a function that raises a type exception.
+
+ * Prototype: def raise_exception():
+ * You are not allowed to import any module
