@@ -120,3 +120,6 @@ Prototype: def safe_function(fct, *args):
  * Otherwise, returns None if something happens during the function and prints in stderr the error precede    by Exception:
  * You have to use try: / except:
 
+9. ByteCode -> Python#4
+
+ * Write the Python function def magic_calculation(a, b): that does exactly the same as the following Python bytecode:
