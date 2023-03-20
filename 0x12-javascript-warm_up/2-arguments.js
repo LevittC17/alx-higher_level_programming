@@ -9,5 +9,5 @@ function printMessage(){
         console.log("Argument found");
     }
     else
-        console.log(${noArgv}, arguments);
+        console.log("Arguments found");
 }
