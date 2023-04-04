@@ -1,7 +1,12 @@
+#!/usr/bin/python3
+
+"""
+Get the URL from the
+command-line argument
+"""
 import urllib.request
 import sys
 
-# Get the URL from the command-line arguments
 url = sys.argv[1]
 
 # Send a request to the URL
