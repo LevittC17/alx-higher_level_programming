@@ -1,9 +1,0 @@
-Define the function find_peak(list_of_integers) that takes a list of unsorted integers as input.
-
-Find the middle element of the list using len(list_of_integers)//2. We'll compare this element with its neighbors to find a peak.
-
-Compare the middle element with its neighbors. If it is greater than both its neighbors, then it is a peak. Return the middle element.
-
-If the middle element is less than its left neighbor, we can discard the right half of the list (as the peak must be on the left half). Recursively call find_peak() on the left half of the list.
-
-If the middle element is less than its right neighbor, we can discard the left half of the list (as the peak must be on the right half). Recursively call find_peak() on the right half of the list.
