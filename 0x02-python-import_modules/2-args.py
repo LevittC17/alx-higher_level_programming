@@ -9,10 +9,10 @@ if __name__ == "__main__":
     num_args = len(args)
     # check if arguments = null
     if num_args == 0:
-        print("0 arguments")
+        print("0 arguments.")
     # check if arguments = 1
     elif num_args == 1:
-        print("1 argument")
+        print("1 argument:")
         print(f"1: {args[0]}")
     else:
         print(f"{num_args} arguments:")
