@@ -19,12 +19,12 @@ Tasks
 	. Yiu have to use `str.format()` to print integers
 
 The Solution:
-	.` def print_list_integer(my_list = []):
+	.``` def print_list_integer(my_list = []):
 	       # Iterate through the list
 	       for i in my_list:
                    print("{:d}".format(i))
 
-	   def print_list_integer(my_list = [1, 2, 3, 4, 5])`
+	   def print_list_integer(my_list = [1, 2, 3, 4, 5])```
  
 1. Secure access to an element in a list
 
