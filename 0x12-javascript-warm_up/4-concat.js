@@ -7,7 +7,7 @@
  * Output: c is cool
 */
 
-const args = process.argv.slice(2)
+const args = process.argv.slice(2);
 
 if (args.length >= 2) {
   console.log(`${args[0]} is ${args[1]}`);
