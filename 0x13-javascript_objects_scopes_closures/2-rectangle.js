@@ -5,11 +5,13 @@
  * check if `w` and `h` are eqaul to 0 or not a positive integer
 */
 
-module.exports = class Rectangle {
+class Rectangle {
   constructor (w, h) {
     if ((w > 0) && (h < 0)) {
       this.width = w;
       this.height = h;
     }
   }
-};
+}
+
+module.exports = Rectangle;
