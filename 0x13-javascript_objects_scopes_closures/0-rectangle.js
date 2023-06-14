@@ -5,8 +5,4 @@
  * Use class notation
 */
 
-class Rectangle {
-  
-}
-
-const rectangle = new Rectangle();
+module.exports = class Rectangle {};
