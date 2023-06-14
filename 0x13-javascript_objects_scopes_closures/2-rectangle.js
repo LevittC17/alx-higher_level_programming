@@ -12,4 +12,4 @@ module.exports = class Rectangle {
       this.height = h;
     }
   }
-}
+};
