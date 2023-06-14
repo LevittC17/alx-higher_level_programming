@@ -7,7 +7,7 @@
  * instance method double() - multiply each width and height by 2
 */
 
-module.exports = class Rectangle {
+class Rectangle {
   constructor (w, h) {
     // check if w, h = 0 or < 0
     if (w > 0 && h > 0) {
@@ -37,4 +37,6 @@ module.exports = class Rectangle {
       }
     };
   }
-};
+}
+
+module.exports = Rectangle;
