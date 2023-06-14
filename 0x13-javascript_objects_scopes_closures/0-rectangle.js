@@ -6,5 +6,7 @@
 */
 
 class Rectangle {
-
+  
 }
+
+const rectangle = new Rectangle();
