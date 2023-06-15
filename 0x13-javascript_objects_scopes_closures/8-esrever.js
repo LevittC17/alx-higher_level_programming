@@ -7,9 +7,9 @@
 */
 
 exports.esrever = function (list) {
-  let newStr = '';
+  let newLst = [];
   for (let i = list.length - 1; i >= 0; i--) {
-    newStr += list[i];
+    newLst.push(list[i]);
   }
-  return newStr;
+  return newLst;
 };
