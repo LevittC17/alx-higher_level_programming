@@ -9,15 +9,16 @@ import MySQLdb
 import sys
 
 if __name__ == "__main__":
-    mydb = MySQLdb.connect(host="localhost", port="3306"
+    db = MySQLdb.connect(host="localhost", port="3306"
                            user=sys.argv[1], passwd=sys.argv[2]
                            db=sys.argv[3], charset="utf8")
-    mycursor = mydb.cursor()
+    mycursor = db.cursor()
 
     mycursor.execute("SELECT * FROM states WHERE name LIKE BINARY 'N%'
                      ORDER BY id ASC")
     for row in mycursor.fetchall():
-        print(row)
+        if row[1][0] == 'N':
+            print(row)
 
     mycursor.close()
-    mydb.close()
+    db.close()
