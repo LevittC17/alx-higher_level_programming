@@ -17,14 +17,14 @@ if __name__ == "__main__":
     # Create a database connection
     mydb = MySQLdb.connect(
                 host="localhost", port=3306, user=sys.argv[1],
-                passwd=sys.argv[2], db=sys.argv[3], charset="utf8mb4"
+                passwd=sys.argv[2], db=sys.argv[3], charset="utf8"
             )
     mycur = mydb.cursor()
+    statename = sys.argv[4]
     # Select states
     mycur.execute(
             "SELECT * FROM states WHERE\
                     BINARY name='{}' ORDER BY id ASC".format(statename))
-    statename = sys.argv[4]
 
     for row in mycur.fetchall():
         print(row)
