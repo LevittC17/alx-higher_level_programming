@@ -1,34 +1,33 @@
 #!/usr/bin/python3
 
 """
-Script that takes in an argument and displays
-all values in the states table of hbtn_0e_0_usa
-where `name` matches the argument
+script that takes in an argument and displays
+all values in the states table of hbtn_0e_0_usa 
+where name matches the argument.
 """
 
 import MySQLdb
 import sys
 
-# Script executed only in this file
 if __name__ == "__main__":
+    # Open database connection
+    db = MySQLdb.connect(host="localhost", port=3306, user=sys.argv[1],
+                         passwd=sys.argv[2], db=sys.argv[3])
 
-    username = sys.argv[1]
-    password = sys.argv[2]
-    database = sys.argv[3]
-    statename = sys.argv[4]
+    # prepare a cursor object using cursor() method
+    cursor = db.cursor()
 
-    # connect to MySQL DB
-    db = MySQL.connect(host='localhost', port=3306
-                       user=username, passwd=password, db=database)
-    mycursor = cursor()
+    # execute SQL query using execute() method.
+    cursor.execute("SELECT * FROM states WHERE name LIKE BINARY '{}'\
+    ORDER BY id ASC".format(sys.argv[4]))
 
-    # Sorting results in ascending order by state.id
-    mycursor.execute("""SELECT * FROM states WHERE
-                     name='{}' ORDER BY id ASC""".format(statename))
-    # Fething and printing values with a For Loop
-    for values in mycursor.fetchall():
-        print(values)
+    # Fetch a single row using fetchone() method.
+    data = cursor.fetchall()
 
-    # Closing the cursor and database in that order
-    mycursor.close()
+    # disconnect from server
+    cursor.close()
     db.close()
+
+    for row in data:
+        if row[1] == sys.argv[4]:
+            print(row)
