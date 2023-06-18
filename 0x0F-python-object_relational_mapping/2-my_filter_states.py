@@ -6,28 +6,31 @@ all values in the states table of hbtn_0e_0_usa
 where name matches the argument.
 """
 
-import MySQLdb
+
 import sys
+import MySQLdb
 
 if __name__ == "__main__":
-    # Open database connection
-    db = MySQLdb.connect(host="localhost", port=3306, user=sys.argv[1],
-                         passwd=sys.argv[2], db=sys.argv[3])
+    # Retrieve command line arguments
+    username = sys.argv[1]
+    password = sys.argv[2]
+    database = sys.argv[3]
+    state_name = sys.argv[4]
 
-    # prepare a cursor object using cursor() method
-    cursor = db.cursor()
+    # Connect to MySQL server
+    db = MySQLdb.connect(host='localhost', port=3306, user=username, passwd=password, db=database)
+    cur = db.cursor()
 
-    # execute SQL query using execute() method.
-    cursor.execute("SELECT * FROM states WHERE name LIKE BINARY '{}'\
-    ORDER BY id ASC".format(sys.argv[4]))
+    # Create and execute the SQL query
+    query = "SELECT * FROM states WHERE name = '{}' ORDER BY states.id ASC".format(state_name)
+    cur.execute(query)
 
-    # Fetch a single row using fetchone() method.
-    data = cursor.fetchall()
+    # Fetch and display the results
+    results = cur.fetchall()
+    for row in results:
+        print(row)
 
-    # disconnect from server
-    cursor.close()
+    # Close the cursor and database connection
+    cur.close()
     db.close()
 
-    for row in data:
-        if row[1] == sys.argv[4]:
-            print(row)
