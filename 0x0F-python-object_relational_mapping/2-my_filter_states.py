@@ -29,7 +29,11 @@ if __name__ == "__main__":
     cur = db.cursor()
 
     # Create and execute the SQL query
-    cur.execute("SELECT * FROM states WHERE name='{}' ORDER BY states.id ASC".format(state_name))
+    cur.execute(
+        "SELECT *
+        FROM states WHERE BINARY
+        name='{}' ORDER BY states.id ASC".format(state_name)
+    )
 
     # Fetch and display the results
     selected = cur.fetchall()
