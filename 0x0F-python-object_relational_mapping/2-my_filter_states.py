@@ -27,7 +27,8 @@ if __name__ == "__main__":
                      name = '{}' ORDER BY id ASC""".format(sys.argv[4]))
     # Fething and printing values with a For Loop
     for values in mycursor.fetchall():
-        print(values)
+        if values[1] == sys.argv[4]:
+            print(values)
 
     # Closing the cursor and database in that order
     mycursor.close()
