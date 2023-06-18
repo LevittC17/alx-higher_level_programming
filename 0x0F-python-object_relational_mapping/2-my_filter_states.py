@@ -14,9 +14,9 @@ if __name__ == "__main__":
                        user=sys.argv[1], passwd=sys.argv[2],
                        db=sys.argv[3], charset="utf8")
     mycursor = cursor()
-    mycursor.execute("SELECT * FROM states WHERE name
+    mycursor.execute("""SELECT * FROM states WHERE name
                      LIKE BINARY '{}'\\ ORDER BY id
-                     ASC".format(sys.argv[4]))
+                     ASC""".format(sys.argv[4]))
     for row in mycursor.fetchall():
         print(row)
 
