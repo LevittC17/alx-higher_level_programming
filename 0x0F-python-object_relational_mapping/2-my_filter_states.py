@@ -15,18 +15,23 @@ if __name__ == "__main__":
         in the argument.
     """
 
+    """
+        Function containing code to select the state provided
+        in the argument.
+    """
+
     # Create a database connection
-    mydb = MySQLdb.connect(
+    conn = MySQLdb.connect(
                 host="localhost", port=3306, user=sys.argv[1],
                 passwd=sys.argv[2], db=sys.argv[3], charset="utf8mb4"
             )
-    mycur = mydb.cursor()
+    cur = conn.cursor()
     # Select states
     state_name = sys.argv[4]
-    mycur.execute(
+    cur.execute(
             "SELECT * FROM states WHERE\
                     BINARY name='{}' ORDER BY id ASC".format(state_name))
-    query_rows = mycur.fetchall()
+    query_rows = cur.fetchall()
     for row in query_rows:
         print(row)
     cur.close()
