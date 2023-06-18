@@ -24,11 +24,10 @@ if __name__ == "__main__":
 
     # Sorting results in ascending order by state.id
     mycursor.execute("""SELECT * FROM states WHERE
-                     name = '{}' ORDER BY id ASC""".format(sys.argv[4]))
+                     name='{}' ORDER BY id ASC""".format(statename))
     # Fething and printing values with a For Loop
     for values in mycursor.fetchall():
-        if values[1] == sys.argv[4]:
-            print(values)
+        print(values)
 
     # Closing the cursor and database in that order
     mycursor.close()
