@@ -15,7 +15,7 @@ if __name__ == "__main__":
     # Create a database connection
     mydb = MySQLdb.connect(
                 host="localhost", port=3306, user=sys.argv[1],
-                passwd=sys.argv[2], db=sys.argv[3], charset="utf8mb4"
+                passwd=sys.argv[2], db=sys.argv[3], charset="utf8"
             )
     mycur = mydb.cursor()
     state_name = sys.argv[4]
@@ -26,5 +26,6 @@ if __name__ == "__main__":
     query = mycur.fetchall()
     for row in query:
         print(row)
-    cur.close()
-    conn.close()
+
+    mycur.close()
+    mydb.close()
