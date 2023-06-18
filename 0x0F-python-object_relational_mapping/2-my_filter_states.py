@@ -2,7 +2,7 @@
 
 """
 script that takes in an argument and displays
-all values in the states table of hbtn_0e_0_usa 
+all values in the states table of hbtn_0e_0_usa
 where name matches the argument.
 """
 
@@ -19,7 +19,7 @@ if __name__ == "__main__":
 
     # Connect to MySQL server
     db = MySQLdb.connect(
-        host='localhost', 
+        host='localhost',
         port=3306,
         user=username,
         passwd=password,
@@ -29,11 +29,10 @@ if __name__ == "__main__":
     cur = db.cursor()
 
     # Create and execute the SQL query
-    cur.execute(
-        "SELECT *
-        FROM states WHERE BINARY
-        name='{}' ORDER BY states.id ASC".format(state_name)
-    )
+    cur.execute("SELECT *
+                FROM states WHERE BINARY
+                name='{}' ORDER BY states.id ASC".format(state_name)
+                )
 
     # Fetch and display the results
     selected = cur.fetchall()
