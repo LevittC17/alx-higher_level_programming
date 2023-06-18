@@ -23,9 +23,10 @@ if __name__ == "__main__":
     # Select states
     mycur.execute(
             "SELECT * FROM states WHERE\
-                    BINARY name='{}' ORDER BY id ASC".format(sys.argv[4]))
-    query = mycur.fetchall()
-    for row in query:
+                    BINARY name='{}' ORDER BY id ASC".format(statename))
+    statename = sys.argv[4]
+
+    for row in mycur.fetchall():
         print(row)
     cur.close()
     conn.close()
