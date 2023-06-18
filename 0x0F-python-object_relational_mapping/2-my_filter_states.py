@@ -1,7 +1,9 @@
 #!/usr/bin/python3
 
-""" This module takes an argument and displays all values states
-    database hbtn_0e_0_usa WHERE name matches the argument.
+"""
+script that takes in an argument and displays
+all values in the states table of hbtn_0e_0_usa
+where name matches the argument.
 """
 
 
@@ -10,14 +12,10 @@ import sys
 
 
 if __name__ == "__main__":
-    """
-        Function containing code to select the state provided
-        in the argument.
-    """
     # Create a database connection
     mydb = MySQLdb.connect(
                 host="localhost", port=3306, user=sys.argv[1],
-                passwd=sys.argv[2], db=sys.argv[3], charset="utf8"
+                passwd=sys.argv[2], db=sys.argv[3], charset="utf8mb4"
             )
     mycur = mydb.cursor()
     state_name = sys.argv[4]
