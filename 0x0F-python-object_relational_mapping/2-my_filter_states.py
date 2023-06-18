@@ -20,13 +20,13 @@ if __name__ == "__main__":
                 passwd=sys.argv[2], db=sys.argv[3], charset="utf8"
             )
     mycur = mydb.cursor()
-    statename = sys.argv[4]
+    stateName = sys.argv[4]
     # Select states
     mycur.execute(
             "SELECT * FROM states WHERE\
-                    BINARY name='{}' ORDER BY id ASC".format(statename))
-
-    for row in mycur.fetchall():
+                    BINARY name='{}' ORDER BY id ASC".format(stateName))
+    query = mycur.fetchall()
+    for row in query:
         print(row)
     cur.close()
     conn.close()
