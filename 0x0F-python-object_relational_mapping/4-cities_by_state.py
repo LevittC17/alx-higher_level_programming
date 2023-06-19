@@ -23,7 +23,7 @@ if __name__ == "__main__":
 
     mycities = mycursor.fetchall()
     for data in mycities:
-        print(mycities)
+        print(data)
 
     mycursor.close()
     mydb.close()
