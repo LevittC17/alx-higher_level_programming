@@ -11,19 +11,14 @@ import sys
 
 if __nama__ == "__main__":
     # connect to MySQLdb
-    db = MySQLdb.connect(
-        host='localhost',
-        port=3306,
-        user=sys.argv[1],
-        passwd=sys.argv[2],
-        charset='utf8mb4'
-    )
-
-    mycur = db.cursor()
-    mycur.execute(
+     mydb = MySQLdb.connect(
+        host="localhost", port=3306, user=argv[1],
+        password=argv[2], database=argv[3])
+    mycursor = mydb.cursor()
+    mycursor.execute(
         "SELECT * FROM states WHERE name LIKE %s ORDER BY id ASC",
         (argv[4],)
         )
-    code = mycur.fetchall()
-    for data in code:
-        print(data)
+    row = mycursor.fetchall()
+    for i in row:
+        print(i)
