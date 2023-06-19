@@ -21,11 +21,9 @@ if __nama__ == "__main__":
 
     mycur = db.cursor()
     mycur.execute(
-        " SELECT * FROM states WHERE name LIKE %s\
-        ORDER BY id ASC", (sys.argv[4], ))
-
-    mycur.close()
-    db.close()
-
-    for data in mycur.fetchall():
+        "SELECT * FROM states WHERE name LIKE %s ORDER BY id ASC",
+        (argv[4],)
+        )
+    code = mycur.fetchall()
+    for data in code:
         print(data)
