@@ -12,6 +12,7 @@ from sqlalchemy.orm import declarative_base
 
 Base = declarative_base()
 
+
 class City(Base):
     """ City class:inherits from Base (imported from model_state)"""
     __tablename__ = 'cities'
