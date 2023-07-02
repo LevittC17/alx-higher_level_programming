@@ -1,23 +1,47 @@
 #!/usr/bin/python3
+
+"""
+Finding a peak in a list of
+unsorted integers
+"""
+
+
 def find_peak(list_of_integers):
-    return find_peak_recursive(list_of_integers, 0, len(list_of_integers) - 1)
+    # Get the length of the list
+    n = len(list_of_integers)
 
+    # Base case: if the list is empty, there is no peak
+    if n == 0:
+        return None
 
-def find_peak_recursive(arr, left, right):
-    mid = (left + right) // 2
+    # Base case: if the list has only one element, it is a peak
+    if n == 1:
+        return list_of_integers[0]
 
-    # Check if mid element is a peak
-    if (mid == 0 or arr[mid - 1] <= arr[mid]) and
-    (mid == len(arr) - 1 or arr[mid + 1] <= arr[mid]):
-        return arr[mid]
+    # Base case: if the first element is a peak
+    if list_of_integers[0] >= list_of_integers[1]:
+        return list_of_integers[0]
 
-    # If the left neighbor is greater, search in the left half
-    if mid > 0 and arr[mid - 1] > arr[mid]:
-        return find_peak_recursive(arr, left, mid - 1)
+    # Base case: if the last element is a peak
+    if list_of_integers[n-1] >= list_of_integers[n-2]:
+        return list_of_integers[n-1]
 
-    # If the right neighbor is greater, search in the right half
-    return find_peak_recursive(arr, mid + 1, right)
+    # Perform binary search for a peak
+    left = 1
+    right = n - 2
 
+    while left <= right:
+        mid = (left + right) // 2
+        mid_val = list_of_integers[mid]
 
-print(find_peak([1, 2, 4, 6, 3]))
-print(find_peak([4, 2, 1, 2, 3, 1]))
+        # Check if the middle element is a peak
+        if list_of_integers[mid-1] <= mid_val >= list_of_integers[mid+1]:
+            return mid_val
+        elif list_of_integers[mid-1] > mid_val:
+            # Search in the left half
+            right = mid - 1
+        else:
+            # Search in the right half
+            left = mid + 1
+
+    return None
