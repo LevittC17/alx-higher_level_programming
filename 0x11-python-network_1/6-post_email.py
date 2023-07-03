@@ -6,17 +6,19 @@ with the email as parameter
 display body response
 """
 
-import requests
+
 import sys
+import requests
+
 
 def main():
+    # Fetch the url and email address
     url = sys.argv[1]
     email = sys.argv[2]
 
-    data = {'email': email}
-    response = requests.post(url, data=data)
+    response = requests.post(url, data={"email": email})
+    print(response.text)
 
-    print('Your email is:', response.text)
 
 if __name__ == "__main__":
     main()
