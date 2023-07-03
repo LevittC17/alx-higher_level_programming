@@ -23,3 +23,7 @@ def main():
         print('Error code:', response.status_code)
     else:
         print(body)
+
+
+if __name__ == "__main__"
+    main()
