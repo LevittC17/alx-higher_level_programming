@@ -23,7 +23,7 @@ def main():
     with urllib.request.urlopen(req) as response:
         body = response.read().decode('utf-8')
 
-    print('Your email is:', body)
+        print('Your email is:', body)
 
 
 if __name__ == "__main__":
