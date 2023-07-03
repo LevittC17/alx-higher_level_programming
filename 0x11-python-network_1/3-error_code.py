@@ -15,14 +15,15 @@ def main():
     # Get URL from sys argument
     url = sys.argv[1]
 
+    request = urllib.request.Request(url)
     # Using a try except block
     try:
-        with urllib.request.urlopen(url) as response:
+        with urllib.request.urlopen(request) as response:
             body = response.read().encode('utf-8')
             print('Body response:')
             print(body)
     except urllib.error.HTTPError as e:
-        print('Error code:', e.code)
+        print(f'Error code: {e.code}')
 
 
 if __name__ == "__main__":
