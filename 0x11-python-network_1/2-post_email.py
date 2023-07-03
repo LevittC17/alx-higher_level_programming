@@ -13,18 +13,16 @@ import sys
 
 
 def main():
-    # Get url and email values
+    # Fetch the url and email
     url = sys.argv[1]
     email = sys.argv[2]
+    data = urllib.parse.urlencode({"email": email}).encode("utf-8")
 
-    data = urllib.parse.urlencode({'email': email}).encode('utf-8')
-    req = urllib.request.Request(url, data)
-
-    with urllib.request.urlopen(req) as response:
-        body = response.read().decode('utf-8')
-
-        print('Your email is:', body)
-
+    try:
+        with urllib.request.urlopen(url, data) as response:
+            print(response.read().decode("utf-8"))
+    except urllib.error.HTTPError as e:
+        print(f"Error code: {e.code}")
 
 if __name__ == "__main__":
     main()
