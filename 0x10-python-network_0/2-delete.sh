@@ -1,3 +1,3 @@
 #!/bin/bash
-# Send a DELETE request to the URL passed, display body response
-curl -sSL -X DELETE "$1"
+# Make a request, server responds with a message
+curl -sL -X POST https://0.0.0.0:5000/catch_me -o /dev/null -w "You got me!"
