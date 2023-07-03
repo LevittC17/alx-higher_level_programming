@@ -10,9 +10,16 @@ in the header response
 import urllib.request
 import sys
 
-url = sys.argv[1]
 
-with urllib.request.urlopen(url) as response:
-    request_id = response.headers.get('X-Request-Id')
+def main():
 
-print(request_id)
+    url = sys.argv[1]
+
+    with urllib.request.urlopen(url) as response:
+        request_id = response.headers.get('X-Request-Id')
+
+    print(request_id)
+
+
+if __name__ == "__main__":
+    main()
