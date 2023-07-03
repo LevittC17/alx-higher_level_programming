@@ -11,6 +11,7 @@ import urllib.request
 import urllib.parse
 import sys
 
+
 def main():
     # Get url and email values
     url = sys.argv[1]
@@ -23,6 +24,7 @@ def main():
         body = response.read().decode('utf-8')
 
     print('Your email is:', body)
+
 
 if __name__ == "__main__":
     main()
