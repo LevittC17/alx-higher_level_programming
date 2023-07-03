@@ -1,15 +1,26 @@
 #!/usr/bin/python3
-"""Sends a POST request to a given URL with a given email.
-Usage: ./6-post_email.py <URL> <email>
-  - Displays the body of the response.
+
 """
-import sys
+Get URL and email address, send a POST request
+with the email as parameter
+display body response
+"""
+
+
 import requests
+import sys
+
+
+def main():
+    # get URL and email
+    url = sys.argv[1]
+    email = sys.argv[2]
+
+    data = {'email': email}
+    response = requests.post(url, data=data)
+
+    print('Your email is:', email)
 
 
 if __name__ == "__main__":
-    url = sys.argv[1]
-    value = {"email": sys.argv[2]}
-
-    r = requests.post(url, data=value)
-    print(r.text)
+    main()
