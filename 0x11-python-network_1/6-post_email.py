@@ -19,7 +19,7 @@ def main():
     data = {'email': email}
     response = requests.post(url, data=data)
 
-    print('Your email is:', response)
+    print('Your email is:', response.text)
 
 
 if __name__ == "__main__":
