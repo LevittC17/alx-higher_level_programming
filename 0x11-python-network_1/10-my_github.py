@@ -31,7 +31,7 @@ def main():
     if 'id' in data:
         print(data['id'])
     else:
-        print("Unable to retrieve user ID")
+        print('None')
 
 
 if __name__ == "__main__":
