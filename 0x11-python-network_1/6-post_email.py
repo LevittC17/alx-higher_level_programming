@@ -6,13 +6,10 @@ with the email as parameter
 display body response
 """
 
-
 import requests
 import sys
 
-
 def main():
-    # get URL and email
     url = sys.argv[1]
     email = sys.argv[2]
 
@@ -20,7 +17,6 @@ def main():
     response = requests.post(url, data=data)
 
     print('Your email is:', response.text)
-
 
 if __name__ == "__main__":
     main()
