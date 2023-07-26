@@ -1,30 +1,26 @@
 #!/usr/bin/node
 
+// import the request module
 const request = require('request');
 
-const endPoint = process.argv[2];
+const apiUrl = process.argv[2];
 
-request.get(endPoint, (err, response, body) => {
-  if (err) {
-    console.log(err);
-  } else {
-    if (response.statusCode === 200) {
-      const tasks = JSON.parse(body);
-      const userCompletedTasks = {};
+request.get(apiUrl, (err, response, body) => {
+  if (err) return console.error(err);
+  if (response.statusCode !== 200) return console.error('Error: Unable to fetch data from the provided API URL');
 
-      tasks.forEach((tasks) => {
-        if (tasks.completed) {
-          if (userCompletedTasks[tasks.userId]) {
-            userCompletedTasks[tasks.userId]++;
-          } else {
-            userCompletedTasks[tasks.userId] = 1;
-          }
-        }
-      });
+  const todos = JSON.parse(body);
+  const completedTasksByUser = {};
 
-      console.log(userCompletedTasks);
-    } else {
-      console.error('Error: Unable to fetch data from the API URL');
+  todos.forEach(todo => {
+    if (todo.completed) {
+      if (completedTasksByUser[todo.userId]) {
+        completedTasksByUser[todo.userId]++;
+      } else {
+        completedTasksByUser[todo.userId] = 1;
+      }
     }
-  }
+  });
+
+  console.log(completedTasksByUser);
 });
