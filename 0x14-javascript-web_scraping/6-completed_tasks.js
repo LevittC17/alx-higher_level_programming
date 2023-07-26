@@ -3,24 +3,24 @@
 // import the request module
 const request = require('request');
 
-const apiUrl = process.argv[2];
+// API endPoint passed as the first argument
+const endPoint = process.argv[2];
 
-request.get(apiUrl, (err, response, body) => {
-  if (err) return console.error(err);
-  if (response.statusCode !== 200) return console.error('Error: Unable to fetch data from the provided API URL');
+request.get(endPoint, (error, response, body) => {
+  if (error) {
+    console.error('Error:', error);
+  } else {
+    const tasks = JSON.parse(body);
+    const completedTasksByUser = {};
 
-  const todos = JSON.parse(body);
-  const completedTasksByUser = {};
+    for (const task of tasks) {
+      const { completed, userId } = task;
 
-  todos.forEach(todo => {
-    if (todo.completed) {
-      if (completedTasksByUser[todo.userId]) {
-        completedTasksByUser[todo.userId]++;
-      } else {
-        completedTasksByUser[todo.userId] = 1;
+      if (completed) {
+        completedTasksByUser[userId] = (completedTasksByUser[userId] || 0) + 1;
       }
     }
-  });
 
-  console.log(completedTasksByUser);
+    console.log(completedTasksByUser);
+  }
 });
