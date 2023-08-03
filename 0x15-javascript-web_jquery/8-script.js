@@ -1,13 +1,16 @@
-#!/usr/bin/node
-
-$(document).ready(function () {
-  // Fetch and list movie titles
-  $.get('https://swapi-api.alx-tools.com/api/films/?format=json', function (data) {
+$.ajax({
+  url: 'https://swapi-api.alx-tools.com/api/films/?format=json',
+  method: 'GET',
+  success: (data) => {
     const movies = data.results;
-    const $listMovies = $('#list_movies');
+    const $list = $('#list_movies');
 
-    movies.forEach(function (movie) {
-      $('<li>').text(movie.title).appendTo($listMovies);
+    movies.forEach((movie) => {
+      const $li = $('<li></li>').text(movie.title);
+      $list.append($li);
     });
-  });
+  },
+  error: (error) => {
+    console.error('Error fetching data:', error);
+  }
 });

@@ -1,8 +1,12 @@
-#!/usr/bin/node
+$.get('https://swapi-api.alx-tools.com/api/films/?format=json', (data) => {
+  const movies = data.results;
+  const $list = $('#list_movies');
 
-$(document).ready(function () {
-  // Fetch and display the translation of `hello`
-  $.get('https://fourtonfish.com/hellosalut/?lang=fr', function (data) {
-    $('hello').text(data.hello);
+  movies.forEach((movie) => {
+    const $li = $('<li></li>').text(movie.title);
+    $list.append($li);
   });
+})
+.fail((error) => {
+  console.error('Error fetching data:', error);
 });
